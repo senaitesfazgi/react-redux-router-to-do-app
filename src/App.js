@@ -1,5 +1,7 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { addNewToDo, removeToDo } from './index';
+import { connect } from 'react-redux';
 
 class App extends React.Component {
   constructor ( props )
@@ -8,7 +10,7 @@ class App extends React.Component {
 
     this.state = {
       newToDo: "", // Keep track of our new to-do value.
-      toDos: [] // Keep track of all the todos.
+      toDos: []
     };
   }
 
@@ -89,4 +91,7 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect( // "Connect" is how we bind the component and our redux setup.
+  null, // Customized state (or null.)
+  { addNewToDo, removeToDo } // Actions.
+)(App); // Name of the component (in this case: App.)

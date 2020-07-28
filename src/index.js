@@ -71,9 +71,9 @@ store.subscribe( () => console.log( store.getState() ) ); // Outputs each time a
  * Dispatch is used for us to send commands for mutation/manipulation/reads from
  * our store/state data.
  */
-// store.dispatch( addNewToDo( "Buy milk." ) );
-// store.dispatch( addNewToDo( "Practice React." ) );
-// store.dispatch( addNewToDo( "Practice Redux." ) );
+store.dispatch( addNewToDo( "Buy milk." ) );
+store.dispatch( addNewToDo( "Practice React." ) );
+store.dispatch( addNewToDo( "Practice Redux." ) );
 
 ReactDOM.render(
   <Provider store={store}>
@@ -81,3 +81,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
+export { addNewToDo, removeToDo };
