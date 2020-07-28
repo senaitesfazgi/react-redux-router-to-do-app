@@ -1,5 +1,6 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { createStore } from 'redux';
 
 /**
  * Redux Actions
@@ -49,6 +50,26 @@ const toDoReducer = ( state = [], action ) => { // Default state is an empty arr
       return state;
   }
 }
+
+/**
+ * Redux Store
+ * Store is the full representation of our state. It is a complex object that
+ * keeps track of the state data, and will help us operate on it using defined
+ * reducers/actions.
+ */
+let store = createStore( toDoReducer );
+
+// Attempt to output, see if we're getting an error.
+store.subscribe( () => console.log( store.getState() ) ); // Outputs each time a change occurs (subcribe watches for changes.)
+
+/**
+ * Redux Dispatch
+ * Dispatch is used for us to send commands for mutation/manipulation/reads from
+ * our store/state data.
+ */
+store.dispatch( addNewToDo( "Buy milk." ) );
+store.dispatch( addNewToDo( "Practice React." ) );
+store.dispatch( addNewToDo( "Practice Redux." ) );
 
 
 class App extends React.Component {
