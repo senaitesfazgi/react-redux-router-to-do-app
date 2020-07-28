@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { v4 as uuidv4 } from 'uuid';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 /**
  * Redux Actions
@@ -70,13 +71,13 @@ store.subscribe( () => console.log( store.getState() ) ); // Outputs each time a
  * Dispatch is used for us to send commands for mutation/manipulation/reads from
  * our store/state data.
  */
-store.dispatch( addNewToDo( "Buy milk." ) );
-store.dispatch( addNewToDo( "Practice React." ) );
-store.dispatch( addNewToDo( "Practice Redux." ) );
+// store.dispatch( addNewToDo( "Buy milk." ) );
+// store.dispatch( addNewToDo( "Practice React." ) );
+// store.dispatch( addNewToDo( "Practice Redux." ) );
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
