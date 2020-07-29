@@ -1,5 +1,5 @@
 import React from 'react';
-import { addNewToDo, removeToDo } from '../actions/todos';
+import { addNewToDo } from '../actions/todos';
 import { connect } from 'react-redux';
 import ToDo from './ToDo';
 
@@ -40,7 +40,6 @@ class App extends React.Component {
   {
     return (
       <>
-        <h1>React/Redux To-Do Application</h1>
         <form onSubmit={this.addToDo}>
             <label htmlFor="newToDo">
               Enter a new "To-Do":
