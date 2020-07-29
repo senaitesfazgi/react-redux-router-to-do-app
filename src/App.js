@@ -20,6 +20,10 @@ class App extends React.Component {
 
     // Dispatch an action; this one we set to require some "newtoDo" text.
     this.props.dispatch( addNewToDo( this.state.newToDo ) );
+
+    // Clear the field for new input.
+    // this.setState( { "newToDo": "" } ); // Do it the ol' fashioned way.
+    this.updateItem( 'newToDo', '' ); // Or use our pre-formatted method.
   }
 
   updateItem ( key, value )
