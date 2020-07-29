@@ -1,6 +1,7 @@
 import React from 'react';
 import { addNewToDo, removeToDo } from '../actions/todos';
 import { connect } from 'react-redux';
+import ToDo from './ToDo';
 
 class App extends React.Component {
   constructor ( props )
@@ -62,9 +63,7 @@ class App extends React.Component {
           <h2>Current To-Dos:</h2>
           <ul>
             {this.props.toDos.map( toDo => ( // We can use .map() to "loop" through our array contents. Great for outputting something like these ToDos.
-              <li key={toDo.uniqueId} onClick={() => {this.removeToDo( toDo.uniqueId )} }>
-                {toDo.value}
-              </li>
+              <ToDo key={toDo.uniqueId} text={toDo.value} />
             ) )}
           </ul>
       </>
