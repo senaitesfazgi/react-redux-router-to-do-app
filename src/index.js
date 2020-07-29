@@ -6,6 +6,8 @@ import toDoReducer from './reducers/todos';
 import App from './components/App';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import {  BrowserRouter as Router, Route } from 'react-router-dom';
+import { render } from '@testing-library/react';
 
 /**
  * Redux Store
@@ -16,7 +18,7 @@ import { Provider } from 'react-redux';
 const store = createStore( toDoReducer );
 
 // Attempt to output, see if we're getting an error.
-store.subscribe( () => console.log( store.getState() ) ); // Outputs each time a change occurs (subcribe watches for changes.)
+//store.subscribe( () => console.log( store.getState() ) ); // Outputs each time a change occurs (subcribe watches for changes.)
 
 /**
  * Redux Dispatch
@@ -27,9 +29,16 @@ store.dispatch( addNewToDo( "Buy milk." ) );
 store.dispatch( addNewToDo( "Practice React." ) );
 store.dispatch( addNewToDo( "Practice Redux." ) );
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
+const Root =(store )=> (
+  <Provider store={store.store}>
+    <Router>
+      <Route path = "/" component={App}/>
+    </Router>
+  </Provider>
 );
+
+render(
+  <Root store ={store}/>, 
+  document.getElementById('root')
+  );
+
