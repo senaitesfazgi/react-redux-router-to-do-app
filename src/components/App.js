@@ -36,12 +36,6 @@ class App extends React.Component {
     this.setState( {[key]: value} );
   }
 
-  removeToDo ( id )
-  {
-    // Using dispatch with our remove action.
-    this.props.dispatch( removeToDo( id ) );
-  }
-
   render ()
   {
     return (
@@ -63,7 +57,10 @@ class App extends React.Component {
           <h2>Current To-Dos:</h2>
           <ul>
             {this.props.toDos.map( toDo => ( // We can use .map() to "loop" through our array contents. Great for outputting something like these ToDos.
-              <ToDo key={toDo.uniqueId} text={toDo.value} />
+              <ToDo
+                key={toDo.uniqueId} 
+                uniqueId={toDo.uniqueId}
+                text={toDo.value} />
             ) )}
           </ul>
       </>
