@@ -69,5 +69,11 @@ class App extends React.Component {
 }
 
 export default connect( 
+  // First argument is a "mapStateToProps" method.
+  // We need to tell react-redux what prop names in
+  // our component should link up to our redux state.
+  // We are formatting redux state ("state") to
+  // a prop in our component called:
+  //                    "this.props.toDos"
   state => { return { toDos: state } },
 )(App); // Name of the component (in this case: App.)
